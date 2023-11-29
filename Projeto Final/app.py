@@ -34,15 +34,13 @@ def bolha(vetor):
         print("Buble",vetor)
 
 def quick_sort(vetor):
-  if len(vetor)<=1:
+  if len(vetor) <= 1:
     return vetor
+    
+  pivo = vetor[len(vetor) // 2]
+  esq,mid,dir = [x for x in vetor if x < pivo], [x for x in vetor if x == pivo], [x for x in vetor if x > pivo]
   
-  pivo = vetor[len(vetor)//2]
-  esq = [x for x in vetor if x < pivo]
-  meio = [x for x in vetor if x == pivo]
-  dir = [x for x in vetor if x > pivo]
-
-  return quick_sort(esq) + meio + quick_sort(dir)
+  return quick_sort(esq) + mid + quick_sort(dir)
 
 
 def criar_vetor(tamanho):
@@ -70,7 +68,7 @@ def main():
   tempo_bolha = time.time() - inicio
 
   inicio = time.time()
-  quick_sort(vetor_quick)
+  vetor_quick = quick_sort(vetor_quick)
   tempo_quick = time.time() - inicio
   
 
